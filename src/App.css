@@ -65,34 +65,48 @@
 .p-2 { padding: 0.5rem; }
 .mt-2 { margin-top: 0.5rem; }
 
-.sorry-card {
-  width: min(100%, 900px);
-  min-height: 600px;
+.sorry-screen {
+  width: 100vw;
+  min-height: 100vh;
   background: linear-gradient(160deg, #fff1f2 0%, #ffe4e9 45%, #fecdd3 100%);
-  border-radius: 24px;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 60px rgba(251, 113, 133, 0.2);
 }
 
-.sorry-card .page-wrap {
+.screen-inner {
   position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 28rem;
-  height: 560px;
+  z-index: 1;
+  width: min(100%, 900px);
+  min-height: min(100vh, 600px);
+  height: min(100vh, 720px);
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-content {
   flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.panel-button {
+.nav-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.nav-button {
   padding: 0.5rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.7);
@@ -101,18 +115,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: all 180ms ease;
 }
 
-.panel-button:disabled {
+.nav-button:hover:not(:disabled) {
+  background: #fff;
+}
+
+.nav-button:disabled {
   opacity: 0;
   cursor: default;
 }
 
-.panel-button:hover:not(:disabled) {
-  background: #fff;
+.dot-row {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.dots span {
+.dot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
@@ -120,26 +140,18 @@
   background: #fecdd3;
 }
 
-.dots span.active {
+.active-dot {
   background: #f43f5e;
 }
 
-.page-one h1 {
-  font-family: Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
-.page-three button {
-  border: 0;
-}
-
 @media (max-width: 640px) {
-  .sorry-card {
-    min-height: 560px;
+  .screen-inner {
+    width: 100%;
+    min-height: 100vh;
   }
 
-  .page-wrap {
-    height: 520px;
+  .nav-row {
+    padding-bottom: 1rem;
   }
 }
 

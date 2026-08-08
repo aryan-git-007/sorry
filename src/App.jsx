@@ -301,7 +301,7 @@ export default function SorryCard() {
 
   return (
     <div
-      className="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden rounded-3xl"
+      className="sorry-screen"
       style={{
         background:
           "linear-gradient(160deg, #fff1f2 0%, #ffe4e9 45%, #fecdd3 100%)",
@@ -355,26 +355,26 @@ export default function SorryCard() {
       <FloatingHearts />
 
       {/* Card content */}
-      <div className="relative z-10 w-full max-w-md h-[560px] flex flex-col">
-        <div key={page} className="flex-1" style={{ animation: "fadeUp 0.4s ease-out" }}>
+      <div className="screen-inner">
+        <div key={page} className="page-content" style={{ animation: "fadeUp 0.4s ease-out" }}>
           {pages[page]}
         </div>
 
         {/* Nav controls */}
-        <div className="flex items-center justify-between px-6 pb-6">
+        <div className="nav-row">
           <button
             onClick={prev}
             disabled={page === 0}
-            className="p-2 rounded-full bg-white/70 text-rose-500 disabled:opacity-0 hover:bg-white transition"
+            className="nav-button"
           >
             <ArrowLeft size={20} />
           </button>
 
-          <div className="flex gap-2">
+          <div className="dot-row">
             {pages.map((_, i) => (
               <span
                 key={i}
-                className="w-2.5 h-2.5 rounded-full"
+                className={i === page ? "dot active-dot" : "dot"}
                 style={{
                   background: i === page ? "#f43f5e" : "#fecdd3",
                   animation: i === page ? "dotPulse 1.2s ease-in-out infinite" : "none",
@@ -386,7 +386,7 @@ export default function SorryCard() {
           <button
             onClick={next}
             disabled={page === pages.length - 1}
-            className="p-2 rounded-full bg-white/70 text-rose-500 disabled:opacity-0 hover:bg-white transition"
+            className="nav-button"
           >
             <ArrowRight size={20} />
           </button>
